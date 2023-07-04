@@ -1,0 +1,26 @@
+{
+	"name": "C++",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.shell.linux": "/bin/bash"
+			},
+			"extensions": [
+				"ms-vscode.cpptools",
+				"ms-vscode.cmake-tools",
+				"mongodb.mongodb-vscode"
+			]
+		}
+	},
+	"remoteUser": "developer",
+	"forwardPorts": [
+		27017,
+		3001
+	],
+	"postStartCommand": "sudo systemctl start mosquitto",
+	"mounts": [
+		"source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+	]
+}
